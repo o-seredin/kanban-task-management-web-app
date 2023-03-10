@@ -1,0 +1,45 @@
+@import '../../style/abstracts/variables';
+
+.Sidebar {
+  width: 300px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  border-right: solid 1px $grey;
+  height: 100%;
+}
+
+.Sidebar-wrapper {
+  margin: 20px;
+}
+
+.Sidebar-logo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.Sidebar-logo-img {
+  margin-right: 10px;
+}
+
+.Sidebar-logo-text {
+  font-size: 32px;
+}
+
+.Sidebar-boards-text {
+  color: $grey;
+  margin-bottom: 30px;
+  font-size: $font-size-1;
+  letter-spacing: 2px;
+}
+
+.Sidebar-hidden {
+  display: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .Sidebar {
+    display: none;
+  }
+}

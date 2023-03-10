@@ -1,0 +1,21 @@
+.light {
+  .Sidebar,
+  .Header,
+  .Task,
+  .Modal-window,
+  .SelectStatus,
+  .Input,
+  .NewColumnBtn,
+  .OptionMenu,
+  .Description {
+    background-color: $light-background-1;
+  }
+}
+
+.light {
+  .Board,
+  .ModeBtn-container,
+  .Subtask {
+    background-color: $light-background-2;
+  }
+}

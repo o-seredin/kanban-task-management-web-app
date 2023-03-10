@@ -1,0 +1,23 @@
+@import '../../style/abstracts/variables';
+
+.OptionMenu {
+  position: absolute;
+  right: 0;
+  bottom: -70px;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 0 20px $grey;
+}
+
+.OptionMenu-edit {
+  color: $grey;
+  font-size: $font-size-1;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.OptionMenu-delete {
+  color: $red;
+  font-size: $font-size-1;
+  cursor: pointer;
+}

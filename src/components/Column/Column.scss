@@ -1,0 +1,12 @@
+@import '../../style/abstracts/variables';
+
+.Column {
+  width: 300px;
+}
+
+.Column-name {
+  margin-bottom: 20px;
+  color: $grey;
+  font-size: $font-size-1;
+  letter-spacing: 2px;
+}

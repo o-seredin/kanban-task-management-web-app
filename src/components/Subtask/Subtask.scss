@@ -1,0 +1,17 @@
+@import '../../style/abstracts/variables';
+
+.Subtask {
+  padding: 10px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.Subtask:hover {
+  background-color: $violet-light;
+}
+
+.Subtask-title {
+  font-size: $font-size-1;
+}

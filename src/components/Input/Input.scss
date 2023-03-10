@@ -1,0 +1,36 @@
+@import '../../style/abstracts/variables';
+
+.Input-container-1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.Input-container-2 {
+  position: relative;
+  width: 100%;
+}
+
+.Input {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: solid 1px $grey;
+  padding: 10px;
+}
+
+.Input-red-border {
+  border-color: $red;
+}
+
+.Input-error {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: $red;
+}
+
+.Input-delete-btn {
+  cursor: pointer;
+}

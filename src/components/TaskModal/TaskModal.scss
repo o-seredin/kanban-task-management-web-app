@@ -1,0 +1,25 @@
+@import '../../style/abstracts/variables';
+
+.TaskModal-title-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.TaskModal-description {
+  color: $grey;
+  margin-bottom: 20px;
+  font-size: $font-size-1;
+}
+
+.TaskModal-subtasks-container {
+  margin-bottom: 20px;
+}
+
+.TaskModal-subtasks-label {
+  color: $grey;
+  font-size: $font-size-1;
+  margin-bottom: 10px;
+  display: block;
+}

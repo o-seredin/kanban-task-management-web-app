@@ -1,0 +1,8 @@
+@import '../../style/abstracts/variables';
+
+.Label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: $font-size-1;
+  color: $grey;
+}

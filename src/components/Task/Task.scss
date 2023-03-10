@@ -1,0 +1,23 @@
+@import '../../style/abstracts/variables';
+
+.Task {
+  border-radius: 5px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 5px $grey;
+  width: 300px;
+  cursor: pointer;
+}
+
+.Task:hover {
+  color: $violet;
+}
+
+.Task-title {
+  font-size: $font-size-2;
+}
+
+.Task-subtasks {
+  color: $grey;
+  font-size: $font-size-1;
+}

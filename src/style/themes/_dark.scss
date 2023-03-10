@@ -1,0 +1,23 @@
+.dark {
+  .Sidebar,
+  .Header,
+  .Task,
+  .Modal-window,
+  .SelectStatus,
+  .Input,
+  .NewColumnBtn,
+  .SidebarBtn-hide,
+  .OptionMenu,
+  .Description {
+    color: $white;
+    background-color: $dark-background-1;
+  }
+}
+
+.dark {
+  .Board,
+  .ModeBtn-container,
+  .Subtask {
+    background-color: $dark-background-2;
+  }
+}

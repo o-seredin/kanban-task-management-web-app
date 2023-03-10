@@ -1,0 +1,38 @@
+@import '../../style/abstracts/variables';
+
+.ModeBtn-container {
+  height: 50px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  position: absolute;
+  bottom: 100px;
+  width: 259px;
+}
+
+.ModeBtn {
+  width: 40px;
+  background-color: $violet;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 2.5px;
+  cursor: pointer;
+}
+
+.ModeBtn-ligth {
+  justify-content: left;
+}
+
+.ModeBtn-dark {
+  justify-content: right;
+}
+
+.ModeBtn-circle {
+  background-color: $white;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}

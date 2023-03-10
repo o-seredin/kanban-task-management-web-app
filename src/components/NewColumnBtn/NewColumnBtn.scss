@@ -1,0 +1,12 @@
+@import '../../style/abstracts/variables';
+
+.NewColumnBtn {
+  color: $grey;
+  width: 300px;
+  margin-top: 40px;
+  text-align: center;
+  border-radius: 5px;
+  border: none;
+  font-size: $font-size-2;
+  cursor: pointer;
+}
