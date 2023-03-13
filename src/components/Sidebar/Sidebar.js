@@ -1,17 +1,11 @@
 import { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { setBoardActive } from '../../store/boardsSlice';
 import AddEditBoardModal from '../AddEditBoardModal/AddEditBoardModal';
-import BoardBtn from '../BoardBtn/BoardBtn';
 import SidebarBtn from '../SidebarBtn/SidebarBtn';
-import ModeButton from '../ModeBtn/ModeBtn';
 import logo from '../../image/logo.svg';
+import BoardsMenu from '../BoardsMenu/BoardsMenu';
 import './Sidebar.scss';
 
 function Sidebar({ sidebarOpen, setSidebarOpen, darkMode, setDarkMode }) {
-  const dispatch = useDispatch();
-  const boards = useSelector(state => state.boards);
-
   const [addBoardModalOpen, setAddBoardModalOpen] = useState(false);
   
   return (
@@ -22,32 +16,17 @@ function Sidebar({ sidebarOpen, setSidebarOpen, darkMode, setDarkMode }) {
             <img className='Sidebar-logo-img' src={logo} alt='logo'></img>
             <div className='Sidebar-logo-text'>kanban</div>
           </div>
-          <div className='Sidebar-boards-text'>ALL BOARDS ({boards.length})</div>
-          {boards.map((board, index) => {
-            return (
-              <BoardBtn
-                className={board.isActive ? 'BoardBtn-active' : ''}
-                board={board}
-                index={index}
-                key={index}
-                onClick={() => dispatch(setBoardActive({ index }))}
-              />
-            );
-          })}
-          <BoardBtn
-            type='new'
-            onClick={() => setAddBoardModalOpen(true)}
-          />
-          <ModeButton
+          <BoardsMenu
             darkMode={darkMode}
             setDarkMode={setDarkMode}
+            setAddBoardModalOpen={setAddBoardModalOpen}
           />
         </div>
       </div>
       <SidebarBtn
-            sidebarOpen={sidebarOpen}
-            setSidebarOpen={setSidebarOpen}
-          />
+        sidebarOpen={sidebarOpen}
+        setSidebarOpen={setSidebarOpen}
+      />
       {addBoardModalOpen &&
         <AddEditBoardModal
           type='Add New'

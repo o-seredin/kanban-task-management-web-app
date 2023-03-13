@@ -10,6 +10,8 @@
 .Input-container-2 {
   position: relative;
   width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .Input {
@@ -29,6 +31,7 @@
   right: 10px;
   top: 10px;
   color: $red;
+  font-size: $font-size-1;
 }
 
 .Input-delete-btn {

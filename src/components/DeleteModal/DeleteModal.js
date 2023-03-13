@@ -19,8 +19,12 @@ function DeleteModal({ type, taskTitle, boardName, taskIndex, columnIndex, setDe
     setOpenTaskModal(false);
   }
 
+  function closeModal(event) {
+    if(event.target === event.currentTarget) setDeleteModalOpen(false);
+  }
+
   return (
-    <Modal>
+    <Modal onClick={closeModal}>
       <div className='DeleteModal-title'>Delete this {type}</div>
       <div className='DeleteModal-text'>{type === 'Task' ?
         `Are you sure you want to delete the "${taskTitle}" task and its subtasks? This action cannot be reversed.` :

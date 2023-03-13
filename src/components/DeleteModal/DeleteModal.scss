@@ -1,12 +1,13 @@
 @import '../../style/abstracts/variables';
 
 .DeleteModal-title {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   color: $red;
 }
 
 .DeleteModal-text {
-  margin-bottom: 20px;
+  margin-bottom: 25px;
+  color: $grey;
 }
 
 .DeleteModal-btns {

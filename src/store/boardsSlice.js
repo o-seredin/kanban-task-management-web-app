@@ -21,6 +21,7 @@ const boardsSlice = createSlice({
     setTaskStatus: (state, action) => {
       const board = state.find(board => board.isActive);
       const column = board.columns.find((column, index) => index === action.payload.columnIndex);
+      if(action.payload.columnIndex === action.payload.newColumnIndex) return;
       const task = column.tasks.find((task, index) => index === action.payload.taskIndex);
       task.status = action.payload.newStatus;
       column.tasks = column.tasks.filter((task, index) => index !== action.payload.taskIndex);

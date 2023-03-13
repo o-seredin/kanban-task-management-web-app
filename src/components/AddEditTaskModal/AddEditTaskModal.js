@@ -20,15 +20,14 @@ function AddEditTaskModal({ type, taskIndex, columnIndex, setAddTaskModalOpen, s
   const [description, setDescription] = useState();
   const [subtasks, setSubtasks] = useState([]);
   const [newColumnIndex, setNewColumnIndex] = useState(0);
-  const [isValid, setIsValid] = useState();
-  const [onValidate, setOnValidate] = useState();
-  
-  if(type === 'Add New' && firstLoad) {
+  const [isValid, setIsValid] = useState(true);
+
+  if (type === 'Add New' && firstLoad) {
     setTaskTitle('');
     setSubtasks([{title: '', isCompleted: false, id: uuidv4()}, {title: '', isCompleted: false, id: uuidv4()}]);
     setFirstLoad(false);
   }
-  if(type === 'Edit' && firstLoad) {
+  if (type === 'Edit' && firstLoad) {
     const column = board.columns.find((column, index) => index === columnIndex);
     const task = column.tasks.find((task, index) => index === taskIndex);
     setSubtasks(task.subtasks.map(subtask => {
@@ -60,23 +59,33 @@ function AddEditTaskModal({ type, taskIndex, columnIndex, setAddTaskModalOpen, s
   }
 
   function createNewTask() {
-    setOnValidate(true);
-    if(isValid) {
+    const isValid = validate();
+    if (isValid) {
       dispatch(addNewTask({ taskTitle, description, subtasks, newColumnIndex }));
       setAddTaskModalOpen(false);
     }
   }
 
   function saveChanges() {
-    setOnValidate(true);
-    if(isValid) {
+    const isValid = validate();
+    if (isValid) {
       dispatch(editTask({ taskTitle, description, subtasks, columnIndex, taskIndex }));
       setEditTaskModalOpen(false);
     }
   }
 
+  function validate() {
+    setIsValid(false);
+    if (!taskTitle) return false;
+    for (let i = 0; i < subtasks.length; i++) {
+      if (!subtasks[i].title) return false;
+    }
+    setIsValid(true);
+    return true;
+  }
+
   function modalClose(event) {
-    if(event.target === event.currentTarget) {
+    if (event.target === event.currentTarget) {
       type === 'Add New' ? setAddTaskModalOpen(false) : setEditTaskModalOpen(false);
     }
   }
@@ -90,10 +99,7 @@ function AddEditTaskModal({ type, taskIndex, columnIndex, setAddTaskModalOpen, s
           value={taskTitle}
           placeholder='e.g. Take coffee break'
           onChange={(event) => setTaskTitle(event.target.value)}
-          onValidate={onValidate}
-          setOnValidate={setOnValidate}
           isValid={isValid}
-          setIsValid={setIsValid}
         />
       </div>
       <div className='AddEditTaskModal-container'>
@@ -112,10 +118,7 @@ function AddEditTaskModal({ type, taskIndex, columnIndex, setAddTaskModalOpen, s
               key={index}
               onChange={(event) => handleSubtasksChange(subtask.id, event.target.value)}
               onClick={() => deleteSubtask(subtask.id)}
-              onValidate={onValidate}
-              setOnValidate={setOnValidate}
               isValid={isValid}
-              setIsValid={setIsValid}
             />
           );
         })}

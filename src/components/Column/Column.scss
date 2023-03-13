@@ -1,11 +1,25 @@
 @import '../../style/abstracts/variables';
 
 .Column {
-  width: 300px;
+  min-width: 300px;
+  max-width: 300px;
+}
+
+.Column-name-container {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.Column-name-icon {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: $violet;
 }
 
 .Column-name {
-  margin-bottom: 20px;
   color: $grey;
   font-size: $font-size-1;
   letter-spacing: 2px;

@@ -5,7 +5,7 @@
   border: none;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
-  padding: 20px 30px;
+  padding: 10px 30px;
   color: $grey;
   margin-left: -30px;
   display: flex;
@@ -18,8 +18,8 @@
 }
 
 .BoardBtn:hover {
-  background-color: $light-background-2;
   color: $violet;
+  background-color: $light-background-2;
 }
 
 .BoardBtn-active {

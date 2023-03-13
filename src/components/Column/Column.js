@@ -10,7 +10,10 @@ function Column({ columnIndex }) {
   
   return (
     <div className='Column'>
-      <div className='Column-name'>{column.name} ({tasks.length})</div>
+      <div className='Column-name-container'>
+        <div className='Column-name-icon'></div>
+        <div className='Column-name'>{column.name} ({tasks.length})</div>
+      </div>
       {tasks.map((task, index) => {
         return (
           <Task

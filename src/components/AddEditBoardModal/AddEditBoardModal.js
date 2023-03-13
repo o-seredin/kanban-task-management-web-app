@@ -16,15 +16,14 @@ function AddEditBoardModal({ type, setAddBoardModalOpen, setEditBoardModalOpen }
   const [firstLoad, setFirstLoad] = useState(true);
   const [boardName, setBoardName] = useState();
   const [boardColumns, setBoardColumns] = useState([]);
-  const [onValidate, setOnValidate] = useState();
-  const [isValid, setIsValid] = useState();
+  const [isValid, setIsValid] = useState(true);
 
-  if(type === 'Add New' && firstLoad) {
+  if (type === 'Add New' && firstLoad) {
     setBoardName('');
     setBoardColumns([{name: 'Todo', tasks: [], id: uuidv4()}, {name: 'Doing', tasks: [], id: uuidv4()}]);
     setFirstLoad(false);
   }
-  if(type === 'Edit' && firstLoad) {
+  if (type === 'Edit' && firstLoad) {
     setBoardColumns(board.columns.map(column => {
       return {...column, id: uuidv4()};
     }));
@@ -50,23 +49,33 @@ function AddEditBoardModal({ type, setAddBoardModalOpen, setEditBoardModalOpen }
   }
 
   function createNewBoard() {
-    setOnValidate(true);
-    if(isValid) {
+    const isValid = validate();
+    if (isValid) {
       dispatch(addNewBoard({ boardName, boardColumns }));
       setAddBoardModalOpen(false);
     }
   }
 
   function saveEditBoard() {
-    setOnValidate(true);
-    if(isValid) {
+    const isValid = validate();
+    if (isValid) {
       dispatch(editBoard({ boardName, boardColumns }));
       setEditBoardModalOpen(false);
     }
   }
 
+  function validate() {
+    setIsValid(false);
+    if (!boardName) return false;
+    for (let i = 0; i < boardColumns.length; i++) {
+      if (!boardColumns[i].name) return false;
+    }
+    setIsValid(true);
+    return true;
+  }
+
   function modalClose(event) {
-    if(event.target === event.currentTarget) {
+    if (event.target === event.currentTarget) {
       type === 'Add New' ? setAddBoardModalOpen(false) : setEditBoardModalOpen(false);
     }
   }
@@ -80,10 +89,7 @@ function AddEditBoardModal({ type, setAddBoardModalOpen, setEditBoardModalOpen }
           value={boardName}
           placeholder='e.g. Web Design'
           onChange={(event) => setBoardName(event.target.value)}
-          onValidate={onValidate}
-          setOnValidate={setOnValidate}
           isValid={isValid}
-          setIsValid={setIsValid}
         />
       </div>
       <div className='AddEditBoardModal-container'>
@@ -96,10 +102,7 @@ function AddEditBoardModal({ type, setAddBoardModalOpen, setEditBoardModalOpen }
               key={index}
               onChange={(event) => handleColumsChange(column.id, event.target.value)}
               onClick={() => deleteColumn(column.id)}
-              onValidate={onValidate}
-              setOnValidate={setOnValidate}
               isValid={isValid}
-              setIsValid={setIsValid}
             />
           );
         })}

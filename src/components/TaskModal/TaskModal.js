@@ -41,7 +41,7 @@ function TaskModal({ columnIndex, taskIndex, setOpenTaskModal }) {
 
   return (
     <>
-      <Modal onClick={modalClose}>
+      <Modal hidden={editTaskModalOpen || deleteModalOpen ? true : false} onClick={modalClose}>
         <div className='TaskModal-title-container'>
           <div>{task.title}</div>
           <OptionBtn

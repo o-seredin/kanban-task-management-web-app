@@ -1,0 +1,24 @@
+@import '../../style/abstracts/variables';
+
+.BoardsMenu-boards-text {
+  color: $grey;
+  margin-bottom: 30px;
+  font-size: $font-size-1;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 768px) {
+  .BoardsMenu-container {
+    background-color: $modal-container;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+  .BoardsMenu {
+    max-width: 500px;
+    margin: 50px;
+    margin-top: 150px;
+    border-radius: 5px;
+  }
+}

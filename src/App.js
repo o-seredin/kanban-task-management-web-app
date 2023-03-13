@@ -3,15 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setBoardActive } from './store/boardsSlice';
 import Header from './components/Header/Header';
 import Board from './components/Board/Board';
-import './App.css';
-import './style/main.scss';
 import BoardEmpty from './components/BoardEmpty/BoardEmpty';
+import './style/main.scss';
+import './App.css';
 
 function App() {
   const dispatch = useDispatch();
   const boards = useSelector(state => state.boards);
   const board = boards.find(board => board.isActive);
-  if(!board && boards.length > 0) dispatch(setBoardActive({ index: 0 }));
+  if (!board && boards.length > 0) dispatch(setBoardActive({ index: 0 }));
 
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [darkMode, setDarkMode] = useState(false);
@@ -29,7 +29,7 @@ function App() {
             darkMode={darkMode}
             setDarkMode={setDarkMode}
           />
-        </> 
+        </>
       ) : (
         <BoardEmpty/>
       )}
