@@ -13,21 +13,23 @@ function App() {
   const board = boards.find(board => board.isActive);
   if (!board && boards.length > 0) dispatch(setBoardActive({ index: 0 }));
 
-  const [sidebarOpen, setSidebarOpen] = useState(true);
-  const [darkMode, setDarkMode] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isDarkTheme, setIsDarkTheme] = useState(false);
   
   return (
-    <div className={'App ' + (darkMode ? 'dark' : 'light')}>
+    <div className={'App ' + (isDarkTheme ? 'dark' : 'light')}>
       {boards.length > 0 ? (
         <>
           <Header
-            sidebarOpen={sidebarOpen}
+            isSidebarOpen={isSidebarOpen}
+            isDarkTheme={isDarkTheme}
+            setIsDarkTheme={setIsDarkTheme}
           />
           <Board
-            sidebarOpen={sidebarOpen}
-            setSidebarOpen={setSidebarOpen}
-            darkMode={darkMode}
-            setDarkMode={setDarkMode}
+            isSidebarOpen={isSidebarOpen}
+            setIsSidebarOpen={setIsSidebarOpen}
+            isDarkTheme={isDarkTheme}
+            setIsDarkTheme={setIsDarkTheme}
           />
         </>
       ) : (

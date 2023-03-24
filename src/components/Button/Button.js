@@ -7,7 +7,8 @@ function Button({ type, value, onClick }) {
         (type === 'violet' ? 'Button-violet' : '') +
         (type === 'red' ? 'Button-red' : '')
       }
-      onClick={onClick}>{value}</button>
+      onClick={onClick}
+    >{value}</button>
   );
 }
 

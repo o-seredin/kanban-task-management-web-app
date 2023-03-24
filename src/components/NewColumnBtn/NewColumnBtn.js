@@ -1,10 +1,10 @@
 import './NewColumnBtn.scss';
 
-function NewColumnBtn({ setEditBoardModalOpen }) {
+function NewColumnBtn({ setIsAddEditBoardModalOpen }) {
   return (
     <button
       className='NewColumnBtn'
-      onClick={() => setEditBoardModalOpen(true)}
+      onClick={() => setIsAddEditBoardModalOpen(true)}
     >+ New Column</button>
   );
 }

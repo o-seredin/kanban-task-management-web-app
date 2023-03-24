@@ -11,24 +11,24 @@ function Task({ columnIndex, taskIndex }) {
   const subtasks = task.subtasks;
   const completedSubtasks = subtasks.filter(subtask => subtask.isCompleted);
   
-  const [openTaskModal, setOpenTaskModal] = useState(false);
+  const [isOpenTaskModal, setIsOpenTaskModal] = useState(false);
 
   return (
     <>
       <div
         className='Task'
-        onClick={() => setOpenTaskModal(true)}
+        onClick={() => setIsOpenTaskModal(true)}
       >
         <div className='Task-title'>{task.title}</div>
         <div
           className='Task-subtasks'
         >{completedSubtasks.length} of {subtasks.length} subtasks</div>
       </div>
-      {openTaskModal &&
+      {isOpenTaskModal &&
         <TaskModal
           taskIndex={taskIndex}
           columnIndex={columnIndex}
-          setOpenTaskModal={setOpenTaskModal}
+          setIsOpenTaskModal={setIsOpenTaskModal}
         />
       }
     </>

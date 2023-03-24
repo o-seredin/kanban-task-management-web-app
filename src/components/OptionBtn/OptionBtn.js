@@ -3,7 +3,9 @@ import './OptionBtn.scss';
 
 function OptionBtn({ onClick }) {
   return (
-    <img className='OptionBtn' src={icon} alt='option' onClick={onClick}></img>
+    <div className='OptionBtn'>
+      <img src={icon} alt='option' onClick={onClick}></img>
+    </div>
   );
 }
 

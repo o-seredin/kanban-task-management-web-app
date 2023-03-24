@@ -7,10 +7,10 @@ import Button from '../Button/Button';
 import Modal from '../Modal/Modal';
 import Description from '../Description/Description';
 import SelectStatus from '../SelectStatus/SelectStatus';
-import './AddEditTaskModal.scss';
 import Label from '../Label/Label';
+import './AddEditTaskModal.scss';
 
-function AddEditTaskModal({ type, taskIndex, columnIndex, setAddTaskModalOpen, setEditTaskModalOpen }) {
+function AddEditTaskModal({ type, taskIndex, columnIndex, setIsAddEditTaskModalOpen }) {
   const dispatch = useDispatch();
   const boards = useSelector(state => state.boards);
   const board = boards.find(board => board.isActive);
@@ -62,7 +62,7 @@ function AddEditTaskModal({ type, taskIndex, columnIndex, setAddTaskModalOpen, s
     const isValid = validate();
     if (isValid) {
       dispatch(addNewTask({ taskTitle, description, subtasks, newColumnIndex }));
-      setAddTaskModalOpen(false);
+      setIsAddEditTaskModalOpen(false);
     }
   }
 
@@ -70,7 +70,7 @@ function AddEditTaskModal({ type, taskIndex, columnIndex, setAddTaskModalOpen, s
     const isValid = validate();
     if (isValid) {
       dispatch(editTask({ taskTitle, description, subtasks, columnIndex, taskIndex }));
-      setEditTaskModalOpen(false);
+      setIsAddEditTaskModalOpen(false);
     }
   }
 
@@ -86,7 +86,7 @@ function AddEditTaskModal({ type, taskIndex, columnIndex, setAddTaskModalOpen, s
 
   function modalClose(event) {
     if (event.target === event.currentTarget) {
-      type === 'Add New' ? setAddTaskModalOpen(false) : setEditTaskModalOpen(false);
+      setIsAddEditTaskModalOpen(false);
     }
   }
 

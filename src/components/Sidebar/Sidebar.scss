@@ -5,17 +5,19 @@
   position: fixed;
   left: 0;
   top: 0;
+  bottom: 0;
   border-right: solid 1px $grey;
-  height: 100%;
 }
 
 .Sidebar-wrapper {
-  margin: 20px;
+  margin: 20px 0;
+  height: 100%;
 }
 
-.Sidebar-logo {
+.Sidebar-logo-container {
   display: flex;
   align-items: center;
+  margin-left: 30px;
   margin-bottom: 30px;
 }
 
@@ -29,10 +31,4 @@
 
 .Sidebar-hidden {
   display: none;
-}
-
-@media only screen and (max-width: 768px) {
-  .Sidebar {
-    display: none;
-  }
 }

@@ -1,17 +1,22 @@
 @import '../../style/abstracts/variables';
 
-.ModeBtn-container {
+.ThemeBtn-container {
   height: 50px;
   border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
-  width: 259px;
+  margin: 0 30px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 70px;
 }
 
-.ModeBtn {
+.ThemeBtn {
   width: 40px;
+  height: 20px;
   background-color: $violet;
   border-radius: 10px;
   display: flex;
@@ -20,17 +25,24 @@
   cursor: pointer;
 }
 
-.ModeBtn-ligth {
+.ThemeBtn-ligth {
   justify-content: left;
 }
 
-.ModeBtn-dark {
+.ThemeBtn-dark {
   justify-content: right;
 }
 
-.ModeBtn-circle {
+.ThemeBtn-circle {
   background-color: $white;
   width: 15px;
   height: 15px;
   border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .ThemeBtn-container {
+    position: relative;
+    bottom: 0;
+  }
 }

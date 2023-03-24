@@ -1,24 +1,24 @@
 import iconLightTheme from '../../image/icon-light-theme.svg';
 import iconDarkTheme from '../../image/icon-dark-theme.svg';
-import './ModeBtn.scss';
+import './ThemeBtn.scss';
 
-function ModeBtn({ darkMode, setDarkMode }) {
+function ThemeBtn({ isDarkTheme, setIsDarkTheme }) {
   function handleClick() {
-    darkMode ? setDarkMode(false) : setDarkMode(true);
+    isDarkTheme ? setIsDarkTheme(false) : setIsDarkTheme(true);
   }
   
   return (
-    <div className='ModeBtn-container'>
+    <div className='ThemeBtn-container'>
       <img src={iconLightTheme} alt='Light Theme'></img>
       <div
-        className={'ModeBtn ' + (darkMode ? 'ModeBtn-dark' : 'ModeBtn-ligth')}
+        className={'ThemeBtn ' + (isDarkTheme ? 'ThemeBtn-dark' : 'ThemeBtn-ligth')}
         onClick={handleClick}
       >
-        <div className='ModeBtn-circle'></div>
+        <div className='ThemeBtn-circle'></div>
       </div>
       <img src={iconDarkTheme} alt='Dark Theme'></img>
     </div>
   );
 }
 
-export default ModeBtn;
+export default ThemeBtn;

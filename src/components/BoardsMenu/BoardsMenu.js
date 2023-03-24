@@ -1,38 +1,55 @@
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setBoardActive } from '../../store/boardsSlice';
 import BoardBtn from '../BoardBtn/BoardBtn';
-import ModeBtn from '../ModeBtn/ModeBtn';
+import ThemeBtn from '../ThemeBtn/ThemeBtn';
+import AddEditBoardModal from '../AddEditBoardModal/AddEditBoardModal';
 import './BoardsMenu.scss';
 
-function BoardsMenu({ darkMode, setDarkMode, setAddBoardModalOpen }) {
+function BoardsMenu({ isDarkTheme, setIsDarkTheme, isBoardsMenuOpen, setIsBoardsMenuOpen }) {
   const dispatch = useDispatch();
   const boards = useSelector(state => state.boards);
 
+  const [isAddEditBoardModalOpen, setIsAddEditBoardModalOpen] = useState(false);
+
   return (
-    <div className='BoardsMenu-container'>
-      <div className='BoardsMenu'>
-        <div className='BoardsMenu-boards-text'>ALL BOARDS ({boards.length})</div>
-        {boards.map((board, index) => {
-          return (
+    <>
+      <div className='BoardsMenu-container'>
+        <div className='BoardsMenu'>
+          <div className='BoardsMenu-boards-text'>ALL BOARDS ({boards.length})</div>
+          <div className='BoardsMenu-boards-container'>
+            {boards.map((board, index) => {
+              return (
+                <BoardBtn
+                  className={board.isActive && 'BoardBtn-active'}
+                  board={board}
+                  index={index}
+                  key={index}
+                  onClick={() => dispatch(setBoardActive({ index }))}
+                />
+              );
+            })}
             <BoardBtn
-              className={board.isActive && 'BoardBtn-active'}
-              board={board}
-              index={index}
-              key={index}
-              onClick={() => dispatch(setBoardActive({ index }))}
+              type='new'
+              onClick={() => {
+                isBoardsMenuOpen && setIsBoardsMenuOpen(false);
+                setIsAddEditBoardModalOpen(true);
+              }}
             />
-          );
-        })}
-        <BoardBtn
-          type='new'
-          onClick={() => setAddBoardModalOpen(true)}
-        />
-        <ModeBtn
-          darkMode={darkMode}
-          setDarkMode={setDarkMode}
-        />
+          </div>
+          <ThemeBtn
+            isDarkTheme={isDarkTheme}
+            setIsDarkTheme={setIsDarkTheme}
+          />
+        </div>
       </div>
-    </div>
+      {isAddEditBoardModalOpen &&
+        <AddEditBoardModal
+          type='Add New'
+          setIsAddEditBoardModalOpen={setIsAddEditBoardModalOpen}
+        />
+      }
+    </>
   );
 }
 

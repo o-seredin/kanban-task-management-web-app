@@ -8,7 +8,7 @@ import Input from '../Input/Input';
 import Button from '../Button/Button';
 import './AddEditBoardModal.scss';
 
-function AddEditBoardModal({ type, setAddBoardModalOpen, setEditBoardModalOpen }) {
+function AddEditBoardModal({ type, setIsAddEditBoardModalOpen }) {
   const dispatch = useDispatch();
   const boards = useSelector(state => state.boards);
   const board = boards.find(board => board.isActive);
@@ -52,7 +52,7 @@ function AddEditBoardModal({ type, setAddBoardModalOpen, setEditBoardModalOpen }
     const isValid = validate();
     if (isValid) {
       dispatch(addNewBoard({ boardName, boardColumns }));
-      setAddBoardModalOpen(false);
+      setIsAddEditBoardModalOpen(false);
     }
   }
 
@@ -60,7 +60,7 @@ function AddEditBoardModal({ type, setAddBoardModalOpen, setEditBoardModalOpen }
     const isValid = validate();
     if (isValid) {
       dispatch(editBoard({ boardName, boardColumns }));
-      setEditBoardModalOpen(false);
+      setIsAddEditBoardModalOpen(false);
     }
   }
 
@@ -76,7 +76,7 @@ function AddEditBoardModal({ type, setAddBoardModalOpen, setEditBoardModalOpen }
 
   function modalClose(event) {
     if (event.target === event.currentTarget) {
-      type === 'Add New' ? setAddBoardModalOpen(false) : setEditBoardModalOpen(false);
+      setIsAddEditBoardModalOpen(false);
     }
   }
 

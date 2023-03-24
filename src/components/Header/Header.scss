@@ -25,7 +25,6 @@
 .Header-btns {
   display: flex;
   align-items: center;
-  gap: 10px;
   position: relative;
 }
 
@@ -33,7 +32,7 @@
   left: 300px;
 }
 
-@media only screen and (max-width: 768px) {
+@media (max-width: 767px) {
   .Header {
     left: 0;
   }

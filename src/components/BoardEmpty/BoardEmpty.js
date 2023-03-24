@@ -4,7 +4,7 @@ import Button from '../Button/Button';
 import './BoardEmpty.scss';
 
 function BoardEmpty({ type }) {
-  const [addBoardModalOpen, setAddBoardModalOpen] = useState(false);
+  const [isAddEditBoardModalOpen, setIsAddEditBoardModalOpen] = useState(false);
   
   return (
     <>
@@ -12,17 +12,18 @@ function BoardEmpty({ type }) {
         <div>
           <div>{type === 'edit'
             ? 'This board is empty. Create a new column to get started.'
-            : 'There are no boards available. Create a new board to get started.'}</div>
+            : 'There are no boards available. Create a new board to get started.'
+          }</div>
           <Button
             value='+ Add New Board'
-            onClick={() => setAddBoardModalOpen(true)}
+            onClick={() => setIsAddEditBoardModalOpen(true)}
           />
         </div>
       </div>
-      {addBoardModalOpen &&
+      {isAddEditBoardModalOpen &&
         <AddEditBoardModal
           type='Add New'
-          setAddBoardModalOpen={setAddBoardModalOpen}
+          setIsAddEditBoardModalOpen={setIsAddEditBoardModalOpen}
         />
       }
     </>

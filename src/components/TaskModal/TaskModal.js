@@ -11,7 +11,7 @@ import DeleteModal from '../DeleteModal/DeleteModal';
 import OptionBtn from '../OptionBtn/OptionBtn';
 import './TaskModal.scss';
 
-function TaskModal({ columnIndex, taskIndex, setOpenTaskModal }) {
+function TaskModal({ columnIndex, taskIndex, setIsOpenTaskModal }) {
   const dispatch = useDispatch();
   const boards = useSelector(state => state.boards);
   const board = boards.find(board => board.isActive);
@@ -20,9 +20,9 @@ function TaskModal({ columnIndex, taskIndex, setOpenTaskModal }) {
   const subtasks = task.subtasks;
   const completedSubtasks = subtasks.filter(subtask => subtask.isCompleted);
 
-  const [optionMenuOpen, setOptionMenuOpen] = useState(false);
-  const [editTaskModalOpen, setEditTaskModalOpen] = useState(false);
-  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
+  const [isOptionMenuOpen, setIsOptionMenuOpen] = useState(false);
+  const [isAddEditTaskModalOpen, setIsAddEditTaskModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
 
   const [newStatus, setNewStatus] = useState(task.status);
   const [newColumnIndex, setNewColumnIndex] = useState(columnIndex);
@@ -30,7 +30,7 @@ function TaskModal({ columnIndex, taskIndex, setOpenTaskModal }) {
   function modalClose(event) {
     if(event.target === event.currentTarget) {
       dispatch(setTaskStatus({ taskIndex, columnIndex, newStatus, newColumnIndex }));
-      setOpenTaskModal(false);
+      setIsOpenTaskModal(false);
     }
   }
 
@@ -41,17 +41,21 @@ function TaskModal({ columnIndex, taskIndex, setOpenTaskModal }) {
 
   return (
     <>
-      <Modal hidden={editTaskModalOpen || deleteModalOpen ? true : false} onClick={modalClose}>
+      <Modal
+        hidden={isAddEditTaskModalOpen || isDeleteModalOpen ? true : false}
+        onClick={modalClose}
+      >
         <div className='TaskModal-title-container'>
           <div>{task.title}</div>
           <OptionBtn
-            onClick={() => setOptionMenuOpen(true)}
+            onClick={() => setIsOptionMenuOpen(true)}
           />
-          {optionMenuOpen &&
+          {isOptionMenuOpen &&
             <OptionMenu
               type='Task'
-              setEditTaskModalOpen={setEditTaskModalOpen}
-              setDeleteModalOpen={setDeleteModalOpen}
+              setIsAddEditTaskModalOpen={setIsAddEditTaskModalOpen}
+              setIsDeleteModalOpen={setIsDeleteModalOpen}
+              setIsOptionMenuOpen={setIsOptionMenuOpen}
             />
           }
         </div>
@@ -81,22 +85,22 @@ function TaskModal({ columnIndex, taskIndex, setOpenTaskModal }) {
           })}
         </SelectStatus>
       </Modal>
-      {editTaskModalOpen &&
+      {isAddEditTaskModalOpen &&
         <AddEditTaskModal
           type='Edit'
           taskIndex={taskIndex}
           columnIndex={columnIndex}
-          setEditTaskModalOpen={setEditTaskModalOpen}
+          setIsAddEditTaskModalOpen={setIsAddEditTaskModalOpen}
         />
       }
-      {deleteModalOpen &&
+      {isDeleteModalOpen &&
         <DeleteModal
           type='Task'
           taskTitle={task.title}
           taskIndex={taskIndex}
           columnIndex={columnIndex}
-          setDeleteModalOpen={setDeleteModalOpen}
-          setOpenTaskModal={setOpenTaskModal}
+          setIsDeleteModalOpen={setIsDeleteModalOpen}
+          setIsOpenTaskModal={setIsOpenTaskModal}
         />
       }
     </>

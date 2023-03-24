@@ -1,38 +1,27 @@
-import { useState } from 'react';
-import AddEditBoardModal from '../AddEditBoardModal/AddEditBoardModal';
+import BoardsMenu from '../BoardsMenu/BoardsMenu';
 import SidebarBtn from '../SidebarBtn/SidebarBtn';
 import logo from '../../image/logo.svg';
-import BoardsMenu from '../BoardsMenu/BoardsMenu';
 import './Sidebar.scss';
 
-function Sidebar({ sidebarOpen, setSidebarOpen, darkMode, setDarkMode }) {
-  const [addBoardModalOpen, setAddBoardModalOpen] = useState(false);
-  
+function Sidebar({ isSidebarOpen, setIsSidebarOpen, isDarkTheme, setIsDarkTheme }) {
   return (
     <>
-      <div className={'Sidebar ' + (!sidebarOpen ? 'Sidebar-hidden' : '')}>
+      <div className={'Sidebar ' + (!isSidebarOpen ? 'Sidebar-hidden' : '')}>
         <div className='Sidebar-wrapper'>
-          <div className='Sidebar-logo'>
+          <div className='Sidebar-logo-container'>
             <img className='Sidebar-logo-img' src={logo} alt='logo'></img>
             <div className='Sidebar-logo-text'>kanban</div>
           </div>
           <BoardsMenu
-            darkMode={darkMode}
-            setDarkMode={setDarkMode}
-            setAddBoardModalOpen={setAddBoardModalOpen}
+            isDarkTheme={isDarkTheme}
+            setIsDarkTheme={setIsDarkTheme}
           />
         </div>
       </div>
       <SidebarBtn
-        sidebarOpen={sidebarOpen}
-        setSidebarOpen={setSidebarOpen}
+        isSidebarOpen={isSidebarOpen}
+        setIsSidebarOpen={setIsSidebarOpen}
       />
-      {addBoardModalOpen &&
-        <AddEditBoardModal
-          type='Add New'
-          setAddBoardModalOpen={setAddBoardModalOpen}
-        />
-      }
     </>
   );
 }

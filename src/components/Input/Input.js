@@ -13,7 +13,9 @@ function Input({ type, value, key, placeholder, onChange, onClick, isValid }) {
         ></input>
         {!isValid && !value && <span className='Input-error'>Can't be empty</span>}
       </div>
-      {type === 'delete' ? <img className='Input-delete-btn' src={iconCross} alt='delete' onClick={onClick}></img> : ''}
+      {type === 'delete' &&
+        <img className='Input-delete-btn' src={iconCross} alt='delete' onClick={onClick}></img>
+      }
     </div>
   );
 }

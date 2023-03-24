@@ -7,7 +7,8 @@
   .Input,
   .NewColumnBtn,
   .OptionMenu,
-  .Description {
+  .Description,
+  .BoardsMenu {
     color: $white;
     background-color: $dark-background-1;
   }
@@ -15,7 +16,7 @@
 
 .dark {
   .Board,
-  .ModeBtn-container,
+  .ThemeBtn-container,
   .Subtask {
     background-color: $dark-background-2;
   }
